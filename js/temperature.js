@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateFromCelsius();
 
-  const buttons = document.querySelectorAll('button');
+  const buttons = document.querySelectorAll('.upDownButton');
 
   for (i=0; i<buttons.length; i++) {
     const thisButton = buttons[i];
@@ -32,6 +32,33 @@ document.addEventListener('DOMContentLoaded', () => {
       // makeOneDecimalPlace(document.querySelector(`#${scale}Input`));
       updateFrom(scale);
     })
+  }
+
+  const optionButtons = document.querySelectorAll('.optionButton');
+
+  for (i=0; i<optionButtons.length; i++) {
+    const thisButton = optionButtons[i];
+    thisButton.addEventListener('click', () => {
+      const scale = thisButton.id[0];
+      const to = parseFloat(thisButton.id.slice(1));
+      updateValueTo(scale, to);
+      updateFrom(scale);
+    })
+  }
+
+  function updateValueTo(scale, to) {
+    if (scale == 'c') {
+      c = to;
+      celsiusInput.value = c.toFixed(1);
+    }
+    if (scale == 'f') {
+      f = to;
+      farenheitInput.value = f.toFixed(1);
+    }
+    if (scale == 'k') {
+      k = to;
+      kelvinInput.value = k.toFixed(1);
+    }
   }
 
   // for (i=0; i<spaces.length; i++) {
@@ -55,26 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateFrom(scale) {
-    if (scale == 'celsius') { updateFromCelsius(); }
-    if (scale == 'farenheit') { updateFromFarenheit(); }
-    if (scale == 'kelvin') { updateFromKelvin(); }
+    if (scale == 'celsius' || scale == 'c') { updateFromCelsius(); }
+    if (scale == 'farenheit' || scale == 'f') { updateFromFarenheit(); }
+    if (scale == 'kelvin' || scale == 'k') { updateFromKelvin(); }
   }
 
   celsiusInput.addEventListener('input', () => {
     c = parseFloat(celsiusInput.value);
-    celsiusInput.value = c.toFixed(1);
+    // celsiusInput.value = c.toFixed(1);
     updateFromCelsius();
   })
+  //
+  // celsiusInput.onfocusout = now();
+  //
+  // function now() {
+  //   console.log('now');
+  //   celsiusInput.value = c.toFixed(1);
+  // }
 
   farenheitInput.addEventListener('input', () => {
     f = parseFloat(farenheitInput.value);
-    farenheitInput.value = f.toFixed(1);
+    // farenheitInput.value = f.toFixed(1);
     updateFromFarenheit();
   })
 
   kelvinInput.addEventListener('input', () => {
     k = parseFloat(kelvinInput.value);
-    kelvinInput.value = k.toFixed(1);
+    // kelvinInput.value = k.toFixed(1);
     updateFromKelvin();
   })
 

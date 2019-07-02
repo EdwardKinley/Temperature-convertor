@@ -48,17 +48,20 @@ body {
 
 input {
   font-size: 10vh;
-  width: 60vw;
+  width: 55vw;
   text-align: right;
   margin-right: 0;
   border: 0;
-  /* background-color: blue; */
+  background-color: lightblue;
 }
 
 button {
   background-color: white;
   border: 0;
   font-size: 4vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  border-radius: 1vh;
 }
 
 .celsius, .farenheit, .kelvin {
@@ -74,4 +77,20 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.options {
+  /* height: 5vh; */
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* justify-content: flex-start; */
+  align-items: center;
+  margin-top: 0.5vh;
+  margin-bottom: 2vh;
+}
+
+button:hover {
+  background-color: grey;
 }
